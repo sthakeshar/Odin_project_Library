@@ -42,3 +42,14 @@ body{
         color: var(--text-clr);
        
     }
+
+#display-book-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 200px;
+
+    ul{
+        list-style: none;
+    }
+
+}
