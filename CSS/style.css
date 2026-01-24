@@ -1,5 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root {
+    --base-clr: #0F172A;    /* Deep Midnight Blue  */
+    --line-clr: #1E293B;    /* Slate border */
+    --hover-clr: #334155;   /* Lighter Slate */
+    --text-clr: #F8FAFC;    /* Off-white text */
+    --accent-clr: #39FF14;  /* Neon Cyber Lime */
+    --secondary-text-clr: #94A3B8;
+}
 * {
 	margin: 0px;
 	padding: 0px;
 	box-sizing: 0px;
 }
+html{
+    font-family: Poppins;
+    line-height: 1.5em;
+}
+body{
+	min-height: 100vh;
+    min-height: 100dvh;
+    background-color: var(--base-clr);
+	color: var(--text-clr);
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+#sidebar{
+    width: 250px;
+    border-right: solid 1px var(--line-clr);
+    padding: 10px 1em;
+}
+#sidebar button{
+        height: 50px;
+        width: 100%;
+        text-align: center;
+        margin-top: 5rem;
+        font-size: 15px;
+        border-radius: 1em;
+        font: inherit;
+        cursor: pointer;
+        background-color: var(--base-clr);
+        color: var(--text-clr);
+       
+    }
