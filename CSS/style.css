@@ -10,46 +10,59 @@
 * {
 	margin: 0px;
 	padding: 0px;
-	box-sizing: 0px;
+	box-sizing: border-box;
 }
 html{
     font-family: Poppins;
     line-height: 1.5em;
 }
 body{
-	min-height: 100vh;
-    min-height: 100dvh;
+	height: 100vh;
     background-color: var(--base-clr);
 	color: var(--text-clr);
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
 }
-#sidebar{
-    width: 250px;
-    border-right: solid 1px var(--line-clr);
-    padding: 10px 1em;
+nav{
+    padding: 10px 1rem;
+    border-bottom: 1px solid var(--line-clr);
 }
-#sidebar button{
-        height: 50px;
-        width: 100%;
-        text-align: center;
-        margin-top: 5rem;
-        font-size: 15px;
-        border-radius: 1em;
-        font: inherit;
-        cursor: pointer;
-        background-color: var(--base-clr);
-        color: var(--text-clr);
-       
-    }
 
 #display-book-container{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 200px;
+    grid-template-columns: repeat(3,1fr); 
+    grid-template-rows: 200px;  
+    padding: 20px 1rem;
+    gap: 1em;
+}
+#display-book-container .book{
+    border: solid 1px var(--line-clr); 
+    border-radius: 0.5em;
+    height: auto;
+    display: grid;
+    padding: 10px 2rem;
 
-    ul{
-        list-style: none;
-    }
+}
 
+footer{
+    height: 75px;
+    border-top: solid 1px var(--line-clr);
+    padding: 10px 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+footer button{
+    width: 150px;
+    height: 50px;
+   background-color: var(--base-clr);
+   color: var(--text-clr);
+   border:none;
+   border-radius: 0.5em;
+}
+#btn-add-book:hover{
+    background-color: var(--hover-clr);
+    color: var(--accent-clr);
 }

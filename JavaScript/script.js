@@ -19,9 +19,29 @@ const myLibrary=[
                     }       
                 ];
 
-
-
 const displayBook = document.getElementById('display-book-container');
+
+
+function Book(name, author, pages, readed, id) {
+    if (!new.target) {
+        throw Error("Must use the new operator to call the function");
+    }
+
+    this.name = name;
+    this.author = author;
+    this.pages = pages;
+    this.readed = readed;
+    this.id = id;
+}
+
+function addBookToLibrary(name, author, pages, readed) {
+  // take params, create a book then store it in the array
+    const randomUUID = crypto.randomUUID();
+    const book=new Book(name, author, pages, readed,randomUUID);
+    myLibrary.push(book);
+}
+
+
 
 let html = '';
 
@@ -35,4 +55,4 @@ myLibrary.map(book => {
                 </ul>
             </div>`;
 }).join('');
-displayBook.innerHTML += html;
+//displayBook.innerHTML += html;
