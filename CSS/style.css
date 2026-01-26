@@ -24,6 +24,33 @@ body{
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
 }
+dialog {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 10px;
+  border: 1px solid #0000003f;
+  border-radius: 10px;
+}
+dialog form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+dialog form div {
+  display: flex;
+  flex-direction: column;
+}
+
+dialog form div:last-child {
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 10px;
+}
+
 nav{
     padding: 10px 1rem;
     border-bottom: 1px solid var(--line-clr);

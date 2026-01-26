@@ -8,30 +8,58 @@
     <script src="JavaScript/script.js" defer></script>
 </head>
 <body>
+    <dialog>
+        <form >
+            <div>
+                <label for="name">Book Name</label>
+                    <input type="text" id="name" placeholder="Harry Potter"/>
+            </div>
+            <div>
+                <label for="Author">Book Author</label>
+                <input type="text" id="author" placeholder=""/>
+            </div>
+            <div>
+                <label for="pages">Pages:</label>
+                <input type="number" id="pages" />
+            </div>
+            <div>
+                <label for="readed">Readed:</label>
+                <select id="readed">
+                    <option value="true">Yes</option>
+                    <option value="false" selected>No</option>
+                </select>
+            </div>
+            <div>
+                <button id="btn-add-book-dialog">Add</button>
+                <button id="cancel-book-btn">Cancel</button>
+            </div>
+        </form>
+    </dialog>
+
     <nav>
-         <h2>MY library</h2>
+        <h2>MY library</h2>
     </nav>
     <div id="display-book-container">
-        <div class="book">
+        <!-- <div class="book">
             <div id="book-name">
-                <label>Book Name</label>
-                <span>KNS</span>
-            </div>
-            <div id="book-author">
-                <label>Author</label>
-                <span>KNS</span>
-            </div>
+                    <label>Book Name</label>
+                    <span>KNS</span>
+                </div>
+                <div id="book-author">
+                    <label>Author</label>
+                    <span>KNS</span>
+                </div>
             <div id="book-category">
-                <label>book category</label>
-                <span>KNS</span>
+                    <label>book category</label>
+                    <span>KNS</span>
             </div>
-            <div class="btn">
-                <button class="deleteBtn">Delete</button>
-            </div>
-        </div>
+                <div class="btn">
+                    <button class="deleteBtn">Delete</button>
+                </div>
+        </div> -->
     </div>
     <footer>
-         <button id="btn-add-book">Add Book</button>
+            <button id="btn-add-book">Add Book</button>
     </footer>
 </body>
 </html>
