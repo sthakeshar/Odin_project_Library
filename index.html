@@ -3,63 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="CSS/style.css" >
-    <script src="JavaScript/script.js" defer></script>
+    <title>My Cyber Library</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+    <script src="./JavaScript/script.js" defer></script>
 </head>
 <body>
-    <dialog>
-        <form >
+    <dialog id="add-book-modal">
+        <form id="book-form">
+            <h2>Add New Book</h2>
             <div>
                 <label for="name">Book Name</label>
-                    <input type="text" id="name" placeholder="Harry Potter"/>
+                <input type="text" id="name" placeholder="e.g. Harry Potter" required/>
             </div>
             <div>
-                <label for="Author">Book Author</label>
-                <input type="text" id="author" placeholder=""/>
+                <label for="author">Author</label>
+                <input type="text" id="author" placeholder="e.g. J.K. Rowling" required/>
             </div>
             <div>
-                <label for="pages">Pages:</label>
-                <input type="number" id="pages" />
+                <label for="pages">Pages</label>
+                <input type="number" id="pages" placeholder="0" required/>
             </div>
             <div>
-                <label for="readed">Readed:</label>
+                <label for="readed">Status</label>
                 <select id="readed">
-                    <option value="true">Yes</option>
-                    <option value="false" selected>No</option>
+                    <option value="true">Read</option>
+                    <option value="false" selected>Not Read</option>
                 </select>
             </div>
-            <div>
-                <button id="btn-add-book-dialog">Add</button>
-                <button id="cancel-book-btn">Cancel</button>
+            <div class="form-btns">
+                <button type="button" id="cancel-book-btn">Cancel</button>
+                <button type="submit" id="btn-add-book-dialog">Add Book</button>
             </div>
         </form>
     </dialog>
 
     <nav>
-        <h2>MY library</h2>
-    </nav>
-    <div id="display-book-container">
-        <!-- <div class="book">
-            <div id="book-name">
-                    <label>Book Name</label>
-                    <span>KNS</span>
-                </div>
-                <div id="book-author">
-                    <label>Author</label>
-                    <span>KNS</span>
-                </div>
-            <div id="book-category">
-                    <label>book category</label>
-                    <span>KNS</span>
+        <div class="nav-header">
+            <h2>MY LIBRARY</h2>
+            <div id="stats-badge">
+            <span id="total-count">0</span> Books 
+            (<span id="read-count">0</span> Read)
             </div>
-                <div class="btn">
-                    <button class="deleteBtn">Delete</button>
-                </div>
-        </div> -->
-    </div>
+        </div>
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="Search by title or author...">
+        </div>
+    </nav>
+
+    <main id="display-book-container">
+        </main>
+
     <footer>
-            <button id="btn-add-book">Add Book</button>
+        <button id="btn-add-book">Add Book</button>
     </footer>
 </body>
 </html>

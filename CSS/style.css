@@ -1,95 +1,237 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
 :root {
-    --base-clr: #0F172A;    /* Deep Midnight Blue  */
-    --line-clr: #1E293B;    /* Slate border */
-    --hover-clr: #334155;   /* Lighter Slate */
-    --text-clr: #F8FAFC;    /* Off-white text */
-    --accent-clr: #39FF14;  /* Neon Cyber Lime */
+    --base-clr: #0F172A;
+    --line-clr: #1E293B;
+    --hover-clr: #334155;
+    --text-clr: #F8FAFC;
+    --accent-clr: #39FF14;
     --secondary-text-clr: #94A3B8;
+    --danger-clr: #ef4444;
 }
+
 * {
-	margin: 0px;
-	padding: 0px;
-	box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-html{
-    font-family: Poppins;
-    line-height: 1.5em;
-}
-body{
-	height: 100vh;
+
+body {
+    font-family: 'Poppins', sans-serif;
     background-color: var(--base-clr);
-	color: var(--text-clr);
+    color: var(--text-clr);
+    height: 100vh;
     display: grid;
-    grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
 }
-dialog {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  margin: 0;
-  padding: 10px;
-  border: 1px solid #0000003f;
-  border-radius: 10px;
-}
-dialog form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
 
-dialog form div {
-  display: flex;
-  flex-direction: column;
-}
-
-dialog form div:last-child {
-  flex-direction: row;
-  justify-content: space-around;
-  gap: 10px;
-}
-
-nav{
-    padding: 10px 1rem;
+/* Navigation */
+nav {
+    nav {
+    display: flex;
+    justify-content: space-between; /* Pushes Logo/Stats to left, Search to right */
+    align-items: center;           /* Centers everything vertically */
+    padding: 1rem 2rem;
     border-bottom: 1px solid var(--line-clr);
+    background-color: var(--base-clr);
+    gap: 20px;
 }
-
-#display-book-container{
-    display: grid;
-    grid-template-columns: repeat(3,1fr); 
-    grid-template-rows: 200px;  
-    padding: 20px 1rem;
-    gap: 1em;
 }
-#display-book-container .book{
-    border: solid 1px var(--line-clr); 
-    border-radius: 0.5em;
-    height: auto;
-    display: grid;
-    padding: 10px 2rem;
-
-}
-
-footer{
-    height: 75px;
-    border-top: solid 1px var(--line-clr);
-    padding: 10px 1em;
+/* Navigation Header & Badge */
+.nav-header {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 1.5rem;      /* Space between "MY LIBRARY" and the badge */
+    white-space: nowrap; /* Prevents title from wrapping */
+}
 
+#stats-badge {
+    background-color: var(--line-clr);
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--secondary-text-clr);
+    border: 1px solid var(--hover-clr);
+    letter-spacing: 0.5px;
 }
-footer button{
-    width: 150px;
-    height: 50px;
-   background-color: var(--base-clr);
-   color: var(--text-clr);
-   border:none;
-   border-radius: 0.5em;
-}
-#btn-add-book:hover{
-    background-color: var(--hover-clr);
+
+#total-count, #read-count {
     color: var(--accent-clr);
+    font-weight: 700;
+}
+
+/* Search Box */
+.search-box {
+    flex: 1;          /* Allows search area to take up available space */
+    max-width: 400px; /* Limits how wide the search bar gets */
+}
+
+#search-input {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: var(--line-clr);
+    border: 1px solid var(--hover-clr);
+    border-radius: 25px;
+    color: var(--text-clr);
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#search-input:focus {
+    outline: none;
+    border-color: var(--accent-clr);
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.15);
+}
+/* Responsive: Stack vertically on small screens */
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    
+    .search-box {
+        width: 100%;
+        max-width: none;
+    }
+}
+/* Main Container */
+#display-book-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: min-content;
+    gap: 1.5rem;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+/* Book Card */
+.book {
+    background-color: var(--line-clr);
+    border: 1px solid var(--hover-clr);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.book:hover {
+    transform: translateY(-5px);
+}
+
+.book.is-read {
+    border-left: 5px solid var(--accent-clr);
+    box-shadow: -5px 0px 15px -8px var(--accent-clr);
+}
+
+.book.is-unread {
+    border-left: 5px solid var(--secondary-text-clr);
+}
+
+.book label {
+    font-size: 0.7rem;
+    color: var(--secondary-text-clr);
+    text-transform: uppercase;
+    display: block;
+}
+
+.book span {
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+/* Card Buttons */
+.btn {
+    display: flex;
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+.btn button {
+    flex: 1;
+    padding: 8px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.markReadBtn {
+    background-color: var(--hover-clr);
+    color: white;
+}
+
+.markReadBtn:hover {
+    background-color: var(--accent-clr);
+    color: var(--base-clr);
+}
+
+.deleteBtn {
+    background-color: transparent;
+    color: var(--danger-clr);
+    border: 1px solid var(--danger-clr) !important;
+}
+
+.deleteBtn:hover {
+    background-color: var(--danger-clr);
+    color: white;
+}
+
+/* Dialog / Modal */
+dialog {
+    background-color: var(--base-clr);
+    color: var(--text-clr);
+    border: 1px solid var(--line-clr);
+    border-radius: 15px;
+    padding: 2rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+dialog form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+dialog input, dialog select {
+    background: var(--line-clr);
+    border: 1px solid var(--hover-clr);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.form-btns {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Footer */
+footer {
+    padding: 1.5rem;
+    border-top: 1px solid var(--line-clr);
+    display: flex;
+    justify-content: center;
+}
+
+#btn-add-book {
+    padding: 12px 30px;
+    background: var(--accent-clr);
+    color: var(--base-clr);
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
 }
